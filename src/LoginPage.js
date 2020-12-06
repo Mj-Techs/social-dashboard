@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
+// import { withRouter } from "react-router-dom";
 import validator from "validator";
 import axios from "axios";
 
@@ -40,7 +41,7 @@ const LoginPage = (props) => {
           });
           if (status) {
             handleUserData(status);
-            //TODO update parent component
+            //TO update parent component
             props.history.push("/dashboard");
           } else if (status === undefined) {
             errors.email = "email does not exist";
@@ -52,6 +53,7 @@ const LoginPage = (props) => {
     }
     setEmail("");
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -96,4 +98,5 @@ const LoginPage = (props) => {
     </div>
   );
 };
+// export default withRouter(LoginPage);
 export default LoginPage;

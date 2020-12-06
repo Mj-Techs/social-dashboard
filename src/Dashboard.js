@@ -15,8 +15,10 @@ const Dashboard = (props) => {
       .get(`https://jsonplaceholder.typicode.com/posts?userId=${userData.id}`)
       .then((response) => {
         const result = response.data;
-        console.log(result);
-        setPosts(result);
+
+        if (result.length > 0) {
+          setPosts(result);
+        }
       })
       .catch((err) => {
         alert(err.message);
@@ -63,11 +65,8 @@ const Dashboard = (props) => {
       <Card style={{ width: "60rem", marginLeft: "200px" }}>
         {posts.map((post) => {
           return (
-            <div>
-              <Card
-                style={{ width: "55rem", marginLeft: "50px" }}
-                key={post.id}
-              >
+            <div key={post.id}>
+              <Card style={{ width: "55rem", marginLeft: "50px" }}>
                 <Card.Title>{post.title}</Card.Title>
                 <Card.Body>{post.body}</Card.Body>
               </Card>
