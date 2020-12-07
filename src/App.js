@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Dashboard from "./Dashboard";
 const App = () => {
@@ -15,6 +15,11 @@ const App = () => {
   };
   return (
     <div>
+      {Object.keys(userData).length > 0 ? (
+        <Redirect to="/dashboard" />
+      ) : (
+        <Redirect to="/" />
+      )}
       <Route
         path="/"
         exact={true}
